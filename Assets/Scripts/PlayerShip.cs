@@ -12,11 +12,44 @@ public class PlayerShip : MonoBehaviour
     Rigidbody _rb = null;
 
 
+
     private void Awake()
     {
+        GetComponent<ParticleSystem>().Play();
+        ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+        em.enabled = false;
+
         _rb = GetComponent<Rigidbody>();
     }
+    [System.Obsolete]
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            GetComponent<ParticleSystem>().Play();
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetComponent<ParticleSystem>().Play();
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = true;
+        }
+       if (Input.GetKeyUp(KeyCode.W))
+        {
+            GetComponent<ParticleSystem>().Play();
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = false;
+        }
 
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            GetComponent<ParticleSystem>().Play();
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = false;
+        }
+    }
     private void FixedUpdate()
     {
         MoveShip();
@@ -25,6 +58,7 @@ public class PlayerShip : MonoBehaviour
 
     void MoveShip()
     {
+       
         // S/Down = -1, W/Up = 1, None = 0. Scale by moveSpeed
         float moveAmountThisFrame = Input.GetAxisRaw("Vertical") * _moveSpeed;
 
