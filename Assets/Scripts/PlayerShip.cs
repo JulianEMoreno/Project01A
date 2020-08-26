@@ -48,15 +48,10 @@ public class PlayerShip : MonoBehaviour
         _rb.MoveRotation(_rb.rotation * turnOffset);
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void Kill()
     {
-        
+        Debug.Log("Player has been killed!");
+        this.gameObject.SetActive(false);
     }
 }
