@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShip : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 12f;
+    [SerializeField] float _moveSpeed = 15f;
     [SerializeField] float _turnSpeed = 3f;
 
     Rigidbody _rb = null;
